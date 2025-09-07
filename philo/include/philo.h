@@ -6,7 +6,7 @@
 /*   By: yyudi <yyudi@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 08:59:22 by yyudi             #+#    #+#             */
-/*   Updated: 2025/08/30 10:37:11 by yyudi            ###   ########.fr       */
+/*   Updated: 2025/09/03 12:25:37 by yyudi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_args
 typedef struct s_fork
 {
 	pthread_mutex_t	mtx;
-}				t_fork;
+}	t_fork;
 
 typedef struct s_shared	t_shared;
 
@@ -62,6 +62,7 @@ struct				s_shared
 
 int		parse_args(t_args *a, int ac, char **av);
 long	now_ms(void);
+void	eat_cycle(t_philo *p);
 void	msleep_loop(long ms, t_shared *sh);
 void	*monitor_routine(void *arg);
 void	*philo_routine(void *arg);
@@ -70,7 +71,6 @@ void	sim_join_and_cleanup(t_shared *sh);
 void	safe_print(t_shared *sh, int id, const char *msg);
 int		stopped(t_shared *sh);
 void	set_stop(t_shared *sh);
-int		all_full(t_shared *sh);
 int		init_shared(t_shared *sh, t_args *a);
 void	destroy_shared(t_shared *sh);
 

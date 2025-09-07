@@ -6,7 +6,7 @@
 /*   By: yyudi <yyudi@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 10:36:10 by yyudi             #+#    #+#             */
-/*   Updated: 2025/08/30 10:36:12 by yyudi            ###   ########.fr       */
+/*   Updated: 2025/08/30 13:46:16 by yyudi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static int	check_full(t_shared *sh)
 	if (sh->a.must_eat > 0 && sh->full_count >= sh->a.n)
 	{
 		sh->stop = 1;
+		pthread_mutex_unlock(&sh->stop_mtx);
 		return (1);
 	}
 	return (0);
